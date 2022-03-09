@@ -1,0 +1,639 @@
+{
+	"info": {
+		"_postman_id": "d116370c-b4c4-4330-8737-e730850f2de4",
+		"name": "Genesys Platform API - ESMT - LeanXcale",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Conversations",
+			"item": [
+				{
+					"name": "Calls",
+					"item": [
+						{
+							"name": "Update conversation participant",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"held\":false}"
+								},
+								"url": {
+									"raw": "{{host}}/api/v2/conversations/calls/{{conversationId}}/participants/{{participantId}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"conversations",
+										"calls",
+										"{{conversationId}}",
+										"participants",
+										"{{participantId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get call conversation",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/v2/conversations/calls/{{conversationId}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"conversations",
+										"calls",
+										"{{conversationId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Query for queue observations Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n          \"queueId\": \"9daa8cdb-7f81-4166-9f53-c4173db62fe8\"\r\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/v2/conversations/calls/{{conversationId}}/participants/{{participantId}}/replace",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"conversations",
+										"calls",
+										"{{conversationId}}",
+										"participants",
+										"{{participantId}}",
+										"replace"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get call history",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/v2/conversations/calls/history?pageSize=50",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"conversations",
+										"calls",
+										"history"
+									],
+									"query": [
+										{
+											"key": "pageSize",
+											"value": "50"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get conversation",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v2/conversations/{{conversationId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"conversations",
+								"{{conversationId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Search",
+					"item": [
+						{
+							"name": "Search users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "36R_qeQ3ZivEC0BFgahniyWEWVxI_8cCVENQBHHRehMui5ypHBC44XlShRLu8TGs-kA9XBo0ZacLtxr-5LhOQA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"pageSize\": 100,\r\n        \"pageNumber\": 1,\r\n        \"types\": [\"users\"],\r\n        \"sortOrder\": \"SCORE\",\r\n        \"returnFields\": [\r\n          \"guid\",\r\n          \"id\",\r\n          \"name\",\r\n          \"presence\",\r\n          \"routingStatus\",\r\n          \"station\",\r\n          \"username\"\r\n        ]\r\n      }"
+								},
+								"url": {
+									"raw": "{{host}}/api/v2/users/search",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"users",
+										"search"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Me",
+					"item": [
+						{
+							"name": "Get current user details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "A2OLXppjfcfFu91V590TjV4G3SbwHBxVkSdeeVIF143RsHkKcX1hSiEMz_SPUU2-jeEHJLKi7_t0PPtAT6S-VQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/v2/users/me",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"users",
+										"me"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Routingstatus",
+					"item": [
+						{
+							"name": "Fetch the routing status of a user",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/v2/users/{{userId}}/routingstatus",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"users",
+										"{{userId}}",
+										"routingstatus"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Roles",
+					"item": [
+						{
+							"name": "Returns a listing of roles and permissions for a user",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/v2/users/{{userId}}/roles",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"users",
+										"{{userId}}",
+										"roles"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/v2/users/{{userId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Analytics",
+			"item": [
+				{
+					"name": "Conversations",
+					"item": [
+						{
+							"name": "Query for conversations details",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n          \"interval\": \"2022-02-13T00:00:00.000Z/2022-02-20T00:00:00.000Z\",\r\n          \"order\": \"desc\",\r\n          \"orderBy\": \"conversationStart\",\r\n          \"paging\": {\r\n            \"pageSize\": \"100\",\r\n            \"pageNumber\": 1\r\n          },\r\n          \"conversationFilters\": [\r\n            {\r\n              \"type\": \"and\",\r\n              \"predicates\": [\r\n                {\r\n                  \"type\": \"dimension\",\r\n                  \"dimension\": \"conversationEnd\",\r\n                  \"operator\": \"notExists\",\r\n                  \"value\": null\r\n                },\r\n                {\r\n                  \"type\": \"dimension\",\r\n                  \"dimension\": \"originatingDirection\",\r\n                  \"operator\": \"matches\",\r\n                  \"value\": \"inbound\"\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        }"
+								},
+								"url": {
+									"raw": "{{host}}/api/v2/analytics/conversations/details/query",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"analytics",
+										"conversations",
+										"details",
+										"query"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Notifications",
+			"item": [
+				{
+					"name": "Channels",
+					"item": [
+						{
+							"name": "Create a new channel",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"url": {
+									"raw": "{{host}}/api/v2/notifications/channels",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"notifications",
+										"channels"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add a list of subscriptions to the existing list of subscriptions",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\"id\":\"v2.users.{{userId}}.presence\"}, {\"id\":\"v2.analytics.queues.{{queueId}}.observations\"}]"
+								},
+								"url": {
+									"raw": "{{host}}/api/v2/notifications/channels/{{channelId}}/subscriptions",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"notifications",
+										"channels",
+										"{{channelId}}",
+										"subscriptions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "OAuth",
+			"item": [
+				{
+					"name": "Get token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{clientSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{clientId}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{tokenHost}}/oauth/token",
+							"host": [
+								"{{tokenHost}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "tokenType",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "accessToken",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://login.mypurecloud.com/oauth/token",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "Genesys Cloud ESMT",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "{{clientSecret}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{clientId}}",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "client_credentials",
+				"type": "string"
+			},
+			{
+				"key": "useBrowser",
+				"value": false,
+				"type": "boolean"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "https://apps.mypurecloud.com/admin/#/admin/oauth/authorizations/f5939f31-dd5e-425f-bfa2-c2fad24d7066",
+				"type": "string"
+			},
+			{
+				"key": "headerPrefix",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "https://login.mypurecloud.com",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
